@@ -11,26 +11,23 @@ export const Header = () => {
   const navLeft = useRef();
   const navRight = useRef();
 
-  useEffect(() => {
-    gsap.set(navContainer.current, { y: "-100%" });
-    gsap.set(navLeft.current, { x: "-100%" });
-    gsap.set(navRight.current, { x: "100%" });
-  }, []);
-
   const openMenu = () => {
-    const t1 = gsap.timeline({yoyo:true});
-    if (menu == false) {
-      t1.to(navContainer.current, {
-        y: 0,
-        duration: 1,
-      })
-        .to(navLeft.current, { x: 0, duration: 1 }, "+=0")
-        .to(navRight.current, { x: 0, duration: 1 }, "-=1");
-    } else {
-      t1.reverse();
-    }
-
-    setMenu(!menu);
+    const t1 = gsap.timeline();
+    !menu
+      ? t1
+          .to(navContainer.current, {
+            y: 0,
+            duration: 0.3,
+          })
+          .to(navLeft.current, { x: 0, duration: 0.5 }, "+=0")
+          .to(navRight.current, { x: 0, duration: 0.5 }, "-=0.5")
+      : t1
+          .to(navLeft.current, { x: "-100%", duration: 0.5 }, "+=0")
+          .to(navRight.current, { x: "100%", duration: 0.5 }, "-=0.5")
+          .to(navContainer.current, {
+            y: "-100%",
+            duration: 0.3,
+          });
   };
 
   return (
@@ -41,7 +38,7 @@ export const Header = () => {
             <div className="header__logo">
               <Link href="/">
                 <a>
-                  <Image src="/logo.svg" width={32} height={32}></Image>
+                  <Image src="/logo.svg" width={32} height={32} alt="logo" />
                 </a>
               </Link>
             </div>
@@ -53,6 +50,7 @@ export const Header = () => {
               }
               onClick={() => {
                 openMenu();
+                setMenu(!menu);
               }}
             >
               <span></span>
@@ -66,6 +64,8 @@ export const Header = () => {
         navContainer={navContainer}
         navLeft={navLeft}
         navRight={navRight}
+        setMenu={setMenu}
+        menu={menu}
       />
     </>
   );
