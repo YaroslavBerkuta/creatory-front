@@ -6,6 +6,7 @@
   height: 100%;
   background-color: #000;
   transform: translateY(-100%);
+  z-index: 998;
 }
 .navbar__flex {
   display: flex;

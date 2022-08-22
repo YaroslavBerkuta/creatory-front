@@ -1,10 +1,17 @@
 .header {
   padding: 20px 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
 }
 .header__flex {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+.header__logo{
+  z-index: 10;
 }
 .header__burger {
   display: flex;
@@ -25,12 +32,22 @@
     background-color: black;
     span {
       border: 1px solid white;
+      &:first-child {
+        transform: rotate(45deg) translate(3px, 3px);
+      }
+      &:nth-child(2) {
+        display: none;
+      }
+      &:last-child {
+        transform: rotate(-45deg) translate(2px, -2px);
+      }
     }
   }
   span {
     display: block;
     border: 1px solid #ffffff;
     width: 25px;
+    transition: all .3s linear;
     &:not(:last-child) {
       margin-bottom: 5px;
     }

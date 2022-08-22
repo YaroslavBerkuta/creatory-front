@@ -35,7 +35,7 @@ export const Header = () => {
       <header className={style.header}>
         <div className="container">
           <div className={style.header__flex}>
-            <div className="header__logo">
+            <div className={style.header__logo}>
               <Link href="/">
                 <a>
                   <Image src="/logo.svg" width={32} height={32} alt="logo" />
