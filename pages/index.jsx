@@ -20,7 +20,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <Canvas />
+        {/* <Canvas /> */}
       </section>
       <section className={style.info}>
         <div className="container">
@@ -146,3 +146,4 @@ export default function Home() {
     </>
   );
 }
+
